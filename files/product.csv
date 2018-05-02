@@ -1,0 +1,119 @@
+﻿Code,Name,Name KH,Category Code,Unit ID,Cost,Price,Alert Quantity, Tax Rate Name,Tax Method,Subcategory Code,Product Variants Separated by |,Supplier1(No),Supplier2(No),Supplier3(No),Supplier4(No),Supplier5(No),Custom Field 1,Custom Field 2,Custom Field 3,Custom Field 4,Custom Field 5,Custom Field 6,Image,Type(standard or service)
+Lotion-001,CM Lotion,ព្យាបាលមុន,Lotion001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Lotion-002,Pharma pure Body Lotion,,Lotion001,1,0,9.5$,0, No Tax, exclusive,,,,,,,,,,,,,,PHARMAPURE BODY LOTION.jpg,standard
+Lotion-003,Pharma pure UV40SPF,,Lotion001,1,0,15.5$,0, No Tax, exclusive,,,,,,,,,,,,,,PHARMAPURE UV40SPF.jpg,standard
+Lotion-004,UV80SPF,ការពារកាំស្មីព្រះអាទិត្យ,Lotion001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,UV 80SPF.jpg,standard
+Lotion-005,UV60SPF,ការពារកាំស្មីព្រះអាទិត្យ,Lotion001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,UV60SPF.jpg,standard
+Lotion-006,UV Body,ការពារកាំស្មីព្រះអាទិត្យ,Lotion001,1,0,13$,0, No Tax, exclusive,,,,,,,,,,,,,,UV BODY.jpg,standard
+Lotion-007,Smoth E,,Lotion001,1,0,18.5$,0, No Tax, exclusive,,,,,,,,,,,,,,SMOOTH E.jpg,standard
+Lotion-008,Milky Whitening,,Lotion001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,MILKY WHITENING.jpg,standard
+Lotion-009,UV V+,ការពារកាំស្មីព្រះអាទិត្យ,Lotion001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,UV-V.jpg,standard
+Lotion-010,CD Lotion,,Lotion001,1,0,5.5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Lotion-011,BP Lotion,,Lotion001,1,0,8.5$,0, No Tax, exclusive,,,,,,,,,,,,,,BP LOTION.jpg,standard
+Lotion-012,,ឡេខាត់ស្បែក,Lotion001,1,0,7$,0, No Tax, exclusive,,,,,,,,,,,,,,ឡេខាត់ស្បែក.jpg,standard
+Lotion-013,,ឡេសំរករាង,Lotion001,1,0,32.5$,0, No Tax, exclusive,,,,,,,,,,,,,,ឡេសំរករាង.jpg,standard
+Lotion-014,KAIRFOLL KITT,,Lotion001,1,0,63$,0, No Tax, exclusive,,,,,,,,,,,,,,KAIRFOLL KITT.jpg,standard
+Cream-001,TVN Cream,បំបាត់រមាស់,Cream001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,TVN CREAM.jpg,standard
+Cream-002,HM Cream,បំបាត់ស្នាមខ្មៅ,Cream001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-003,Vitil Cream,បំបាត់ភ្លឺ,Cream001,1,0,13$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-004,HD Cream,បំបាត់រមាស់,Cream001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,HD CREAM.jpg,standard
+Cream-005,Cool Cream,បំបាត់ក្រហម,Cream001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,COOL CREAM.jpg,standard
+Cream-006,Phyto Cream,បំបាត់មុនរមាស់,Cream001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,PHYTO CREAM.jpg,standard
+Cream-007,H1 Cream,បំបាត់រមាស់,Cream001,1,0,1.5$,0, No Tax, exclusive,,,,,,,,,,,,,,H1 CREAM.jpg,standard
+Cream-008,RT Cream,បំបាត់មុនអង្កាម,Cream001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,RT CREAM.jpg,standard
+Cream-009,TSN Cream,ព្យាបាលមុន,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,TSN CREAM.jpg,standard
+Cream-010,EC Cream,បំបាត់រមាស់,Cream001,1,0,5.5$,0, No Tax, exclusive,,,,,,,,,,,,,,EC CREAM SMALL.jpg,standard
+Cream-011,Eyes Cream,បំបាត់ជ្រួញ,Cream001,1,0,10$,0, No Tax, exclusive,,,,,,,,,,,,,,EYES CREAM.jpg,standard
+Cream-012,AC Cream,ព្យាបាលតាអក,Cream001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,AC CREAM.jpg,standard
+Cream-013,VE4000 Cream,,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-014,Lipstick Cream,,Cream001,1,0,1$,0, No Tax, exclusive,,,,,,,,,,,,,,LIPSTICK CREAM.jpg,standard
+Cream-015,CD Cream,ព្យាបាលមុន,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,CD CREAM.jpg,standard
+Cream-016,B1 Cream,បំបាត់ស្នាមខ្មៅ,Cream001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,B1 CREAM.jpg,standard
+Cream-017,K1 Cream,បំបាត់ស្នាមខ្មៅ,Cream001,,0,5.5$,0, No Tax, exclusive,,,,,,,,,,,,,,K1 CREAM.jpg,standard
+Cream-018,HL Cream,បំបាត់ប្រតិកម្ម,Cream001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,HL CREAM.jpg,standard
+Cream-019,GBC Cream,បំបាត់រមាស់,Cream001,1,0,2$,0, No Tax, exclusive,,,,,,,,,,,,,,GBC CREAM.jpg,standard
+Cream-020,Vitamin C Cream,បណ្ដុះកោសិកា,Cream001,1,0,35$,0, No Tax, exclusive,,,,,,,,,,,,,,VITAMIN C CREAM.jpg,standard
+Cream-021,Vitamin C (35$) Cream,,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,VITAMIN C 35$.jpg,standard
+Cream-022,Vitamin C Cream small,,Cream001,,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,VITAMIN C SMALL.jpg,standard
+Cream-023,Mix F Cream,ធ្វើអោយមុខសស្អាត,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,MIX F CREAM.jpg,standard
+Cream-024,Melasma Cream,បំបាត់ស្នាមខ្មៅ,Cream001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,MALASMA.jpg,standard
+Cream-025,Make up Cream,ម្សៅត្រនាប់,Cream001,1,0,7$,0, No Tax, exclusive,,,,,,,,,,,,,,MAKE UP CREAM.jpg,standard
+Cream-026,DermaT Cream,,Cream001,,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,DERMA T CREAM.jpg,standard
+Cream-027,Vitamin E Cream,បំបាត់ជ្រូញបណ្ដុះកោសិកា,Cream001,1,0,14.5$,0, No Tax, exclusive,,,,,,,,,,,,,,VITAMIN E CREAM.jpg,standard
+Cream-028,Vitamin E Cream,,Cream001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-029,,ឡេលាបក្លៀក តូច​,Cream001,1,0,2$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-030,EC-5 ,បន្តក់លើមុនធំ,Cream001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,EC-5 CREAM.jpg,standard
+Cream-031,Q-10 Cream,,Cream001,1,0,3.5$,0, No Tax, exclusive,,,,,,,,,,,,,,Q-10 CREAM.jpg,standard
+Cream-032,EC cream big,,Cream001,1,0,8.5$,0, No Tax, exclusive,,,,,,,,,,,,,,EC CREAM BIG.jpg,standard
+Cream-033,M1 cream ,ថ្នាំប្រជុយ,Cream001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-034,Urea Cream,,Cream001,,0,8.5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Cream-035,ឡេលាបក្លៀក Cream ព្យាបាល់ក្លៀកខ្មៅ,,Cream001,,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Gel -001,MT gel ,បំបាត់មុនក្រហម,Gel-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,MT GEL.jpg,standard
+Gel -002,CM Gel,ព្យាបាលមុន,Gel-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,CM GEL.jpg,standard
+Gel -003,CM+ Gel ,ព្យាបាលមុន,Gel-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Gel -004,CM Gel small,ព្យាបាលមុន,Gel-001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Gel -005,GL Gel,,Gel-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,GL GEL.jpg,standard
+Gel -006,A1 ,,Gel-001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,A1.jpg,standard
+Gel -007,Hya+ Gel,,Gel-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Saop-001,PA Saop,សំរាប់ស្បែកទូទៅ,Saop-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,PA SOAP.jpg,standard
+Saop-002,PA Saop Small,,Saop-001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,PA SOAP SMALL.jpg,standard
+Saop-003,L  Saop,ព្យាបាលមុន,Saop-001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,L-SOAP.jpg,standard
+Saop-004,L Saop small,,Saop-001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,L SOAP SMALL.jpg,standard
+Saop-005,Pink Saop ,សំរាប់ស្បែកទូទៅ,Saop-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,PINK SOAP.jpg,standard
+Saop-006,Orange Saop ,ព្យាបាលមុន,Saop-001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,ORANGE SOAP.jpg,standard
+Saop-007,Oily Saop,សំរាប់មុខមានខ្លាញ់ មុន,Saop-001,1,0,7.5$,0, No Tax, exclusive,,,,,,,,,,,,,,OILY SOAP.jpg,standard
+Saop-008,AB wash,,Saop-001,1,0,8.5$,0, No Tax, exclusive,,,,,,,,,,,,,,AB WASH BODY.jpg,standard
+Saop-009,Phyto Saop,,Saop-001,1,0,8$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Saop-010,Tha Saop,,Saop-001,1,0,8$,0, No Tax, exclusive,,,,,,,,,,,,,,THA SOAP.jpg,standard
+Saop-011,AQ Saop,,Saop-001,1,0,3.5$,0, No Tax, exclusive,,,,,,,,,,,,,,AQ SOAP.jpg,standard
+Saop-012,QUTAR Saop,,Saop-001,1,0,3.5$,0, No Tax, exclusive,,,,,,,,,,,,,,QUTAR SOAP.jpg,standard
+Saop-013,Actimed Saop,,Saop-001,1,0,1$,0, No Tax, exclusive,,,,,,,,,,,,,,ACTIMED SOAP.jpg,standard
+Saop-014,Acne Saop,,Saop-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Saop-015,BP2.5 Saop,,Saop-001,1,0,4.5$,0, No Tax, exclusive,,,,,,,,,,,,,,BP 2.5 SOAP.jpg,standard
+Saop-016,AB wash មុខ,,Saop-001,1,0,8$,0, No Tax, exclusive,,,,,,,,,,,,,,AB FACE.jpg,standard
+Serum-001,PH ស្អំ,,SERUM-001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,PH ស្អំ.jpg,standard
+Serum-002,SERUM-COLLAGEN-25,,SERUM-001,1,0,25$,0, No Tax, exclusive,,,,,,,,,,,,,,SERUM COLLAGEN 25.jpg,standard
+Serum-003,SERUM-COLLAGEN-90,,SERUM-001,1,0,90$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+Serum-004,Sym Ake-Serum,,SERUM-001,1,0,13$,0, No Tax, exclusive,,,,,,,,,,,,,,SYM AKE SERUM.jpg,standard
+Serum-005,SERUM-COLLAGEN-50,,SERUM-001,1,0,50$,0, No Tax, exclusive,,,,,,,,,,,,,,SERUM COLLAGEN 50.jpg,standard
+DRUG-001,RT2 cp,,DRUG-001,1,0,10$,0, No Tax, exclusive,,,,,,,,,,,,,,RT-2.jpg,standard
+DRUG-002,NS cp,,DRUG-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,NS CP.jpg,standard
+DRUG-003,GF cp,,DRUG-001,1,0,6$,0, No Tax, exclusive,,,,,,,,,,,,,,GF CP.jpg,standard
+DRUG-004,Collagen cp,,DRUG-001,1,0,27.5$,0, No Tax, exclusive,,,,,,,,,,,,,,COLLAGEN CP.jpg,standard
+DRUG-005,NUHAIR ,,DRUG-001,1,0,17.5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+DRUG-006,TB cp,,DRUG-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,TB CP.jpg,standard
+DRUG-007,NUHAIR For man,,DRUG-001,1,0,17.5$,0, No Tax, exclusive,,,,,,,,,,,,,,NUHAIR FOR MAN.jpg,standard
+DRUG-008,NUHAIR For women,,DRUG-001,1,0,17.5$,0, No Tax, exclusive,,,,,,,,,,,,,,NUHAIR FOR WOMAN.jpg,standard
+DRUG-009,MT cp,,DRUG-001,1,1,5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+DRUG-010,DX small,,DRUG-001,1,0,2.5$,0, No Tax, exclusive,,,,,,,,,,,,,,DX small.jpg,standard
+DRUG-011,DX big,,DRUG-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,DX big.jpg,standard
+DRUG-012,AC cp,,DRUG-001,1,0,3$,0, No Tax, exclusive,,,,,,,,,,,,,,AC.jpg,standard
+DRUG-013,Loss W,,DRUG-001,1,0,12.5$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+DRUG-019,Vitil CP,,DRUG-001,1,0,30$,0, No Tax, exclusive,,,,,,,,,,,,,,VITILL CP.jpg,standard
+DRUG-020,Evra កៅអៀកពន្យាកំណើត,,DRUG-001,1,0,25$,0, No Tax, exclusive,,,,,,,,,,,,,,EVRA កៅអៀកពន្យាកំណើត.jpg,standard
+DRUG-021,Lazine,,DRUG-001,1,0,2$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+DRUG-022,Azith cp,,DRUG-001,1,0,5$,0, No Tax, exclusive,,,,,,,,,,,,,,AZITH CP.jpg,standard
+powder-001,,ម្សៅលឿង​ ធំ,POWDER-001,1,0,7$,0, No Tax, exclusive,,,,,,,,,,,,,,ម្សៅលឿងធំ.jpg,standard
+Powder-002,Pharma pure 50SPF,,POWDER-001,1,0,27.5$,0, No Tax, exclusive,,,,,,,,,,,,,,PHARMAPURE 50SPF.jpg,standard
+Powder-003,Pharma pure 40SPF,,POWDER-001,1,0,25.5$,0, No Tax, exclusive,,,,,,,,,,,,,,PHARMA PURE 40SPF.jpg,standard
+Other-001,Mask (2$),,OTHER-001,1,0,2$,0, No Tax, exclusive,,,,,,,,,,,,,,MASK 2$.jpg,standard
+Other-002,Mask small,,OTHER-001,1,0,1$,0, No Tax, exclusive,,,,,,,,,,,,,,MASK SMALL.jpg,standard
+Other-003,Mask big,,OTHER-001,1,0,4$,0, No Tax, exclusive,,,,,,,,,,,,,,MASK BIG.jpg,standard
+Other-004,ជក់,,OTHER-001,1,0,2.5$,0, No Tax, exclusive,,,,,,,,,,,,,,ជក់.jpg,standard
+Other-005,សាច់ជូរ,,OTHER-001,1,0,8.5$,0, No Tax, exclusive,,,,,,,,,,,,,,សាច់ជូរ.jpg,standard
+Other-006,សំឡី,,OTHER-001,1,0,2$,0, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,standard
+service-001,Laser មុខម៉ត់,,SERVICE-001,1,0,80$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-002,laser​  បំបាត់ពុកចង្ការ,,SERVICE-001,1,0,40$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-003,Laser  បំបាត់រោមក្លៀក,,SERVICE-001,1,0,40$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-004,Laser បំបាត់ក្រហម,,SERVICE-001,1,0,80$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-005,Laser​ ព្យាបាលមុន,,SERVICE-001,1,0,80$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-006,Laser Carbon បណ្ដុះកោសិកថ្មី,,SERVICE-001,1,0,80$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-007,Laser បំបាត់ស្នាមខ្មៅ,,SERVICE-001,1,0,80$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-008,RF          មុខម៉ត់,,SERVICE-001,1,0,50$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-009,Massage មុខមុន,,SERVICE-001,1,0,10$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-010,Massage​ មុខមុន ព្យាបាល,,SERVICE-001,1,0,15$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-011,Massage បូមមុនខា្លញ់,,SERVICE-001,1,0,20$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-012,Massage Oxygen,,SERVICE-001,1,0,30$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-013,Massage  បំបាត់ក្រហម,,SERVICE-001,1,0,20$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-014,ចាក់ថ្នាំ,,SERVICE-001,1,0,5$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
+service-015,Laser កាត់ប្រជ្រុយ,,SERVICE-001,1,0,$,, No Tax, exclusive,,,,,,,,,,,,,,no_image.png,service
