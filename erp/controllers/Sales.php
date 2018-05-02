@@ -4646,9 +4646,6 @@ class Sales extends MY_Controller
     			}
 			$this->data['quantity_recs'] = $arr;
             }
-
-		
-			//$this->erp->print_arrays($arr);
 			$this->data['setting'] = $this->site->get_setting();
 			$this->data['modal_js'] = $this->site->modal_js();
             $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('sales'), 'page' => lang('sales')), array('link' => '#', 'page' => lang('edit_deliveries')));
