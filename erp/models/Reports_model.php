@@ -1586,7 +1586,17 @@ ORDER BY
     }
 	public function getSaleDailies($date)
     {
-        $this->db->select("date, reference_no, customer, sale_status, total_discount, grand_total, paid, (grand_total-paid) as balance, payment_status")
+        $this->db->select("
+        	date, 
+        	reference_no, 
+        	customer, 
+        	sale_status,
+        	 total_discount, 
+        	 grand_total, 
+        	 paid, 
+        	 COALESCE((SELECT SUM(erp_return_sales.grand_total) FROM erp_return_sales WHERE erp_return_sales.sale_id = erp_sales.id), 0) as return_sale,
+        	 (grand_total-paid) as balance, 
+        	 payment_status")
 			->where("date >=", $date.' 00:00:00')
 			->where("date <=", $date.' 23:55:00');
 
@@ -1694,7 +1704,16 @@ ORDER BY
     }
 	public function getMonthSales($date, $warehouse_id = NULL, $year = NULL, $month = NULL)
     {
-        $this->db->select("date, reference_no, customer, total_discount, sale_status, grand_total, paid, (grand_total-paid) as balance, payment_status");
+        $this->db->select("
+        	date, 
+        	reference_no, 
+        	customer, 
+        	total_discount, 
+        	sale_status, 
+        	grand_total, 
+        	paid, 
+        	COALESCE((SELECT SUM(erp_return_sales.grand_total) FROM erp_return_sales WHERE erp_return_sales.sale_id = erp_sales.id), 0) as return_sale,
+        	(grand_total-paid) as balance, payment_status");
 		
 		if($date) {
             $this->db->where('sales.date', $date);
