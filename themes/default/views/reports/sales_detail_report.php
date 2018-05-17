@@ -111,7 +111,6 @@
                             class="icon fa fa-file-picture-o"></i></a></li>
             </ul>
         </div>
-		
     </div>
 
     <div style="display: none;">
@@ -348,8 +347,7 @@
 						            $amount_return=0;	
                                     $amounts=0;
 									$total_overh = 0;
-
-
+									
 									$sales_by_gls = $this->db->query("SELECT
 																	erp_gl_trans.sale_id,
 																	erp_gl_trans.customer_id,
@@ -461,7 +459,7 @@
 									}
 									
 									}else{
-									    
+
 										foreach($sales_detail_returned as $sale_detail_returned){										
 											$unit = isset($sale_detail_returned->variant) ? $sale_detail_returned->variant : $sale_detail_returned->unit;
 											$total_cost = $sale_detail_returned->unit_cost * $sale_detail_returned->quantity;
