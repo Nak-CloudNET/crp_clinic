@@ -768,10 +768,21 @@ class Reports extends MY_Controller
 		}
 		$this->load->library('datatables');
 			$this->datatables
-				->select("products.id AS id, products.image, sales.date,sales.reference_no, sale_items.product_code, sale_items.product_name,(erp_products.cost * erp_sale_items.quantity) AS TotalCostOfGoodsSold, (erp_sale_items.unit_price * erp_sale_items.quantity) AS TotalPrice, sale_items.quantity")
+				->select("
+                    products.id AS id, 
+                    products.image, 
+                    sales.date,
+                    sales.reference_no, 
+                    sale_items.product_code, 
+                    sale_items.product_name,
+                    categories.name as category,
+                    (erp_products.cost * erp_sale_items.quantity) AS TotalCostOfGoodsSold, 
+                    (erp_sale_items.unit_price * erp_sale_items.quantity) AS TotalPrice, 
+                    sale_items.quantity")
 				->from('sales')
 				->join('sale_items', 'sales.id = sale_items.sale_id', 'left')
 				->join('products', 'sale_items.product_id = products.id', 'left')
+                ->join('categories', 'products.category_id = categories.id', 'left')
 				->where('sales.customer_id', $customer)
 				->group_by('sales.reference_no');
 		if($start_date){
@@ -4717,12 +4728,12 @@ class Reports extends MY_Controller
         if ($this->input->get('start_date')) {
             $start_date = $this->erp->fsd($this->input->get('start_date'));
         } else {
-            $start_date = $datt;
+            $start_date = NULL;
         }
         if ($this->input->get('end_date')) {
             $end_date = $this->erp->fsd($this->input->get('end_date'));
         } else {
-            $end_date = $datt;
+            $end_date = NULL;
         }
         if ($this->input->get('serial')) {
             $serial = $this->input->get('serial');
@@ -4908,7 +4919,11 @@ class Reports extends MY_Controller
 				grand_total,
 				paid, 
 				(erp_sales.grand_total - erp_sales.paid) as balance,
-				payment_status", FALSE)
+                sale_items.unit_cost,
+                0 as profit,
+                payment_status
+                ", 
+                FALSE)
 				->from('sales')
 				->join('sale_items', 'sale_items.sale_id=sales.id', 'left')
 				->join('warehouses', 'warehouses.id=sales.warehouse_id', 'left')
@@ -8964,23 +8979,19 @@ class Reports extends MY_Controller
             $this->session->set_flashdata('error', lang("no_customer_selected"));
             redirect('reports/customers');
         }
-
-        $this->data['sales'] = $this->reports_model->getSalesTotals($user_id);
-        $this->data['total_sales'] = $this->reports_model->getCustomerSales($user_id);
-        $this->data['total_quotes'] = $this->reports_model->getCustomerQuotes($user_id);
-        $this->data['total_sales_order'] = $this->reports_model->getSalesOrder($user_id);
-        $this->data['total_returns'] = $this->reports_model->getCustomerReturns($user_id);
-		$this->data['total_deposits'] = $this->reports_model->getCustomerDeposits($user_id);
-        $this->data['users'] = $this->reports_model->getStaff();
-        $this->data['warehouses'] = $this->site->getAllWarehouses();
-        $this->data['billers'] = $this->site->getAllCompanies('biller');
-			
-        $this->data['error'] = validation_errors() ? validation_errors() : $this->session->flashdata('error');
-		
-		$this->data['date'] = $date;
-		
-        $this->data['user_id'] = $user_id;
-        $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('reports'), 'page' => lang('reports')), array('link' => '#', 'page' => lang('customers_report')));
+        $this->data['sales']                = $this->reports_model->getSalesTotalsByCustomer($user_id);
+        $this->data['total_sales']          = $this->reports_model->getCustomerSalesById($user_id);
+        $this->data['total_quotes']         = $this->reports_model->getCustomerQuotesById($user_id);
+        $this->data['total_sales_order']    = $this->reports_model->getSalesOrder($user_id);
+        $this->data['total_returns']        = $this->reports_model->getCustomerReturnsById($user_id);
+		$this->data['total_deposits']       = $this->reports_model->getCustomerDeposits($user_id);
+        $this->data['users']                = $this->reports_model->getStaff();
+        $this->data['warehouses']           = $this->site->getAllWarehouses();
+        $this->data['billers']              = $this->site->getAllCompanies('biller');	
+        $this->data['error']                = validation_errors() ? validation_errors() : $this->session->flashdata('error');
+		$this->data['date']                 = $date;
+        $this->data['user_id']              = $user_id;
+        $bc = array(array('link'    => base_url(), 'page' => lang('home')), array('link' => site_url('reports'), 'page' => lang('reports')), array('link' => '#', 'page' => lang('customers_report')));
         $meta = array('page_title' => lang('customers_report'), 'bc' => $bc);
 		
         $this->page_construct('reports/customer_report', $meta, $this->data);
