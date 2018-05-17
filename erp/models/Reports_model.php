@@ -535,7 +535,6 @@ class Reports_model extends CI_Model
 		$this->db
 		->from('deposits')
 		->where('company_id', $customer_id);
-		// ->where('deposits.pos <>', '1');
         return $this->db->count_all_results();
 	}
 	public function getCustomerDeposits($company_id)
