@@ -475,11 +475,9 @@ class Reports_model extends CI_Model
 	
     public function getSalesTotal($customer_id)
     {
-
         $this->db
                 ->select('SUM(COALESCE(grand_total, 0)) as total_amount, SUM(COALESCE(paid, 0)) as paid', FALSE)
-                ->where('customer_id', $customer_id)
-                ->where('sales.pos <>', '1');
+                ->where('customer_id', $customer_id);
         $q = $this->db->get('sales');
         if ($q->num_rows() > 0) {
             return $q->row();
@@ -500,8 +498,7 @@ class Reports_model extends CI_Model
     {
         $this->db
                 ->from('sales')
-                ->where('customer_id', $customer_id)
-                ->where('sales.pos <>', '1');
+                ->where('customer_id', $customer_id);
         return $this->db->count_all_results();
     }
     public function getCustomerQuotes($customer_id)
