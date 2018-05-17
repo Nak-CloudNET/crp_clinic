@@ -570,9 +570,6 @@ class Reports_model extends CI_Model
         }
         return FALSE;
     }
-	
-	//chivorn chart stock
-	
 		
 	public function getCategoryStockValue($biller= NULL,$customer= NULL,$start_date= NULL,$end_date= NULL)
     {

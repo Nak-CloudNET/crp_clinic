@@ -83,6 +83,7 @@ $(document).ready(function(){
 	var addr3 = $("#addr3").val();
 	var addr4 = $("#addr4").val();
 	var addr5 = $("#addr5").val();
+	
 	if(not2 == addr){
 		$("#addr").attr('checked', 'checked');
 	}else if(not2 == addr1){
