@@ -95,13 +95,13 @@
 
 <ul id="myTab" class="nav nav-tabs">
     <li class=""><a href="#sales-con" class="tab-grey"><?= lang('sales') ?></a></li>
+    <li class=""><a href="#sales_order-con" class="tab-grey"><?= lang('sales_order') ?></a></li>
     <li class=""><a href="#payments-con" class="tab-grey"><?= lang('payments') ?></a></li>
     <li class=""><a href="#quotes-con" class="tab-grey"><?= lang('quotes') ?></a></li>
-    <li class=""><a href="#sales_order-con" class="tab-grey"><?= lang('sales_order') ?></a></li>
-    <li class=""><a href="#returns-con" class="tab-grey"><?= lang('return_sales') ?></a></li>
 	<li class=""><a href="#deposits-con" class="tab-grey"><?= lang('deposits') ?></a></li>
 	<li class=""><a href="#products-con" class="tab-grey"><?= lang('products') ?></a></li>
 	<li class=""><a href="#top-products-con" class="tab-grey"><?= lang('top_products') ?></a></li>
+    <li class=""><a href="#returns-con" class="tab-grey"><?= lang('return_sales') ?></a></li>
 </ul>
 
 <div class="tab-content">

@@ -461,6 +461,17 @@ class Reports_model extends CI_Model
         }
         return FALSE;
     }
+    public function getSalesTotalsByCustomer($customer_id)
+    {
+
+        $this->db->select('SUM(COALESCE(grand_total, 0)) as total_amount, SUM(COALESCE(paid, 0)) as paid', FALSE)
+            ->where('customer_id', $customer_id);
+        $q = $this->db->get('sales');
+        if ($q->num_rows() > 0) {
+            return $q->row();
+        }
+        return FALSE;
+    }
 	
     public function getSalesTotal($customer_id)
     {
@@ -480,6 +491,11 @@ class Reports_model extends CI_Model
         $this->db->from('sales')->where('biller_id', $customer_id);
         return $this->db->count_all_results();
     }
+    public function getCustomerSalesById($customer_id)
+    {
+        $this->db->from('sales')->where('customer_id', $customer_id);
+        return $this->db->count_all_results();
+    }
     public function getCustomerSale($customer_id)
     {
         $this->db
@@ -493,6 +509,11 @@ class Reports_model extends CI_Model
         $this->db->from('quotes')->where('biller_id', $customer_id);
         return $this->db->count_all_results();
     }
+    public function getCustomerQuotesById($customer_id)
+    {
+        $this->db->from('quotes')->where('customer_id', $customer_id);
+        return $this->db->count_all_results();
+    }
         public function getCustomerQuote($customer_id)
     {
         $this->db->from('quotes')->where('customer_id', $customer_id);
@@ -501,6 +522,11 @@ class Reports_model extends CI_Model
     public function getCustomerReturns($customer_id)
     {
         $this->db->from('return_sales')->where('biller_id', $customer_id);
+        return $this->db->count_all_results();
+    }
+    public function getCustomerReturnsById($customer_id)
+    {
+        $this->db->from('return_sales')->where('customer_id', $customer_id);
         return $this->db->count_all_results();
     }
 	public function getCustomerReturn($customer_id)
@@ -521,6 +547,14 @@ class Reports_model extends CI_Model
                 ->from('deposits')
                 ->join('users', 'users.id=deposits.created_by', 'left')
 				->where($this->db->dbprefix('deposits') . ".company_id", $company_id);
+        return $this->db->count_all_results();
+    }
+    public function getCustomerDepositsById($company_id)
+    {
+        $this->db
+                ->from('deposits')
+                ->join('users', 'users.id=deposits.created_by', 'left')
+				->where($this->db->dbprefix('deposits') . ".customer_id", $company_id);
         return $this->db->count_all_results();
     }
 
