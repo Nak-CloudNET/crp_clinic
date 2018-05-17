@@ -461,8 +461,7 @@
 									}
 									
 									}else{
-
-										// $this->erp->print_arrays($sales_detail_returned);
+									    
 										foreach($sales_detail_returned as $sale_detail_returned){										
 											$unit = isset($sale_detail_returned->variant) ? $sale_detail_returned->variant : $sale_detail_returned->unit;
 											$total_cost = $sale_detail_returned->unit_cost * $sale_detail_returned->quantity;
