@@ -344,18 +344,18 @@ class Customers extends MY_Controller
                 $config['encrypt_name'] = true;
                 $files = $_FILES;
                 $cpt = count($_FILES['userfile']['name']);
-                //$photo = array();
                 $old_photo=$this->companies_model->getCompanyAttachment($id);
                 $photo = json_decode($old_photo[0]->attachment);
+                if(!$photo)
+                {
+                    $photo = array();
+                }
                 for ($i = 0; $i < $cpt; $i++) {
                     $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
                     $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
                     $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
                     $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
                     $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
-                    
-                        $this->erp->print_arrays($files['userfile']['size'][$i]);
-                    
                     $this->upload->initialize($config);
                     if (!$this->upload->do_upload()) {
                         $error = $this->upload->display_errors();
