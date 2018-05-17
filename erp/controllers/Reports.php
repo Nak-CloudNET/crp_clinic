@@ -16136,7 +16136,8 @@ class Reports extends MY_Controller
 						$amount				= 0;	
 						$amounts			= 0;
 						$total_overh 		= 0;
-						
+                        $amount_return 		= 0;
+
 						$sales_by_gls = $this->db->query("SELECT
 														erp_gl_trans.sale_id,
 														erp_gl_trans.customer_id,
@@ -16236,7 +16237,9 @@ class Reports extends MY_Controller
 								$total_amount += $sale_detail_returned->subtotal - $sale_detail_returned->item_tax;
 								$total_item_tax += $sale_detail_returned->item_tax;
 								$amount = $total_amount- $sale->order_discount + $sale->shipping;
-								$amounts +=	$amount; 
+								$amounts +=	$amount;
+                                $amount_return = $total_amount- $sale->order_discount + $sale->shipping;
+                                $total_unit_price_return += $sale_detail_returned->subtotal - $sale_detail_returned->item_tax;
 								
 								$this->excel->getActiveSheet()->SetCellValue('A'. $row, $sale_detail_returned->product_name.$sale_detail_returned->product_code);
 								$this->excel->getActiveSheet()->SetCellValue('B'. $row, $sale->biller);
@@ -16316,6 +16319,8 @@ class Reports extends MY_Controller
 							$g_amounts += $total_amount;
 							$grand_totals += (float) ($amount);
 						}
+                        $g_total_prices += $amount - $amount_return;
+
 						$g_total_tax2 += $total_tax;
 						$g_total_disc += $total_discount;
 						$g_total_costs += $total_costs;
@@ -16340,7 +16345,7 @@ class Reports extends MY_Controller
 				$this->excel->getActiveSheet()->setCellValue('H'. $row, "(".$this->erp->formatMoney($g_total_tax2).")");
 				$this->excel->getActiveSheet()->setCellValue('I'. $row, "(".$this->erp->formatMoney($g_total_disc).")");
 				$this->excel->getActiveSheet()->setCellValue('J'. $row, $this->erp->formatMoney($g_total_costs));
-				$this->excel->getActiveSheet()->setCellValue('K'. $row, $this->erp->formatMoney($g_amounts));
+				$this->excel->getActiveSheet()->setCellValue('K'. $row, $this->erp->formatMoney($g_total_prices - $total_unit_price_return));
 				$this->excel->getActiveSheet()->setCellValue('L'. $row, $this->erp->formatMoney($g_amounts - $g_total_costs));
 				$this->excel->getActiveSheet()->mergeCells('A'. $row.':G'. $row);
 				$this->excel->getActiveSheet()->getStyle('H'. $row.':L'. $row)->getBorders()->getTop()->setBorderStyle(PHPExcel_Style_Border::BORDER_MEDIUM);

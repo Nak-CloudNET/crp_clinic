@@ -111,7 +111,6 @@
                             class="icon fa fa-file-picture-o"></i></a></li>
             </ul>
         </div>
-		
     </div>
 
     <div style="display: none;">
@@ -278,9 +277,11 @@
 							$g_total_shipping = 0;
 							$g_total_tax =0;
 							$grand_totals = 0;
+                            $gt_discount = 0;
+
 							if(count($sales) > 0){
 								foreach($sales as $key => $sale){
-								
+								$gt_discount += $sale->order_discount;
 								$table_return_items = "erp_return_items"; 
 								$table_sale_items = "erp_sale_items";
 								
@@ -389,7 +390,7 @@
 											$total_item_tax += $sale_detail->item_tax; 
 										    $amount = $total_amount- $sale->order_discount + $sale->shipping;
 											//$amounts +=	$amount;
-											$gt_discount += $sale->order_discount;
+											//$gt_discount += $sale->order_discount;
 										 
 								?>
 										<tr>			
@@ -458,10 +459,10 @@
 									}
 									
 									}else{
-										// $this->erp->print_arrays($sales_detail_returned);
+
 										foreach($sales_detail_returned as $sale_detail_returned){										
 											$unit = isset($sale_detail_returned->variant) ? $sale_detail_returned->variant : $sale_detail_returned->unit;
-											$total_cost = $this->erp->formatMoney($sale_detail_returned->unit_cost) * $sale_detail_returned->quantity;											
+											$total_cost = $sale_detail_returned->unit_cost * $sale_detail_returned->quantity;
 											$gross_margin = ($sale_detail_returned->subtotal - $sale_detail_returned->item_tax) - $total_cost;
 											$sub_total = ($total_amount - $sale->order_discount) + $sale->order_tax + $total_item_tax + $sale->shipping;
 											
@@ -476,6 +477,8 @@
 										    $amount_return = $total_amount- $sale->order_discount + $sale->shipping;
 											$amounts +=	$amount; 
 											$total_discount2 = $gt_discount + $sale->order_discount;
+
+											$total_unit_price_return += $sale_detail_returned->subtotal - $sale_detail_returned->item_tax;
 									?>
 										<tr>			
 											<td></td>
@@ -543,7 +546,7 @@
 									<td></td>
 								</tr>
 								
-								<?php 		
+								<?php
 									echo $html;
 									
 									if($sale->type == 2 ){
@@ -561,7 +564,7 @@
 									$g_total_prices += $amount - $amount_return;
 									$g_total_discount = $total_discount2;
 									//$g_gross_margin = ($g_amounts) - $g_total_costs ;
-									$g_gross_margin = ($g_amounts) - $g_total_costs ;
+									//$g_gross_margin = ($g_amounts) - $g_total_costs ;
 									$g_total_shipping += $sale->shipping;
 									$g_total_tax += $sale->order_tax + $total_item_tax;								
 									$g_totals = ($g_amounts + $g_total_shipping + $g_total_tax) - $g_order_discounts;
@@ -579,8 +582,8 @@
 							<tr>
 								<th colspan="10"  style="color:#0586ff"class="right info-foot"><?= lang("total") ?>  : </th>						
 								<th class="right" style="color:#0586ff"><?= $this->erp->formatMoney($g_total_costs); ?></th>
-								<th class="right" style="color:#0586ff"><?= $this->erp->formatMoney($g_total_prices); ?></th>
-								<th class="right" style="color:#0586ff" title=" (Amount - Order Discount) - Total Cost "><?= $this->erp->formatMoney($g_total_prices - $g_total_costs); ?></th>
+								<th class="right" style="color:#0586ff"><?= $this->erp->formatMoney($g_total_prices - $total_unit_price_return); ?></th>
+								<th class="right" style="color:#0586ff" title=" (Amount - Order Discount) - Total Cost "><?= $this->erp->formatMoney(($g_total_prices - $g_total_costs) - $total_unit_price_return); ?></th>
 							</tr>
 							
 							<tr>
@@ -615,7 +618,8 @@
 								<th colspan="10" style="color:#0586ff" class="right info-foot" ><?= lang("total_gross_margin"); ?> : </th>							
 								<th class="right" style="color:#0586ff"></th>
 								<th class="right" style="color:#0586ff"></th>
-								<th class="right" style="color:#0586ff"><?= $this->erp->formatMoney($g_total_prices - $g_total_costs - $total_discount2 - ($total_overh !=0 ? $total_overh : 0)); ?></th>
+								<th class="right" style="color:#0586ff"><?= $this->erp->formatMoney($this->erp->formatMoney(($g_total_prices - $g_total_costs) - $total_unit_price_return - $total_discount2 + $g_total_shipping)); ?></th>
+
 							</tr>
 						
 						</tfoot>
@@ -675,6 +679,6 @@
 	}
 	table .info-foot{
 		text-transform: uppercase; 
-		font-weight:100px;
+		font-weight: 100px;
 	}
 </style>
