@@ -38,6 +38,7 @@
                             <th><?php echo $this->lang->line("grand_total"); ?></th>
 							<th><?php echo $this->lang->line("discount"); ?></th>
                             <th><?php echo $this->lang->line("paid"); ?></th>
+                            <th><?php echo $this->lang->line("return"); ?></th>
                             <th><?php echo $this->lang->line("balance"); ?></th>
                             <th><?php echo $this->lang->line("payment_status"); ?></th>
                         </tr>
@@ -48,11 +49,14 @@
 							$pay   = 0;
 							$balances = 0;
 							$total_discount = 0;
+							$return =0;
 							foreach($sales as $sale){
 								$total += $sale->grand_total;
 								$pay += $sale->paid;
 								$balances += $sale->balance;
 								$total_discount += $sale->total_discount;
+								$return+=$sale->return_sale;
+
 						?>
 							<tr>
 								<td style="display: none;"></td>
@@ -63,6 +67,7 @@
 								<td><?= number_format($sale->grand_total,2); ?></td>
 								<td><?= number_format($sale->total_discount,2); ?></td>
 								<td><?= number_format($sale->paid,2); ?></td>
+								<td><?= number_format($sale->return_sale,2); ?></td>
 								<td><?= number_format($sale->balance,2); ?></td>
 								<td><?= row_status($sale->payment_status); ?></td>
 							</tr>
@@ -80,6 +85,7 @@
                             <th><?php echo number_format($total,2); ?></th>
 							<th><?php echo number_format($total_discount,2); ?></th>
                             <th><?php echo number_format($pay,2); ?></th>
+                             <th><?php echo number_format($return,2); ?></th>
                             <th><?php echo number_format($balances,2); ?></th>
                             <th><?php echo $this->lang->line("payment_status"); ?></th>
                         </tr>
