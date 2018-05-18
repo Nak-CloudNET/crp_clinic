@@ -91,7 +91,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <?= lang("type", "type"); ?>
-                                  <?php $types = array(''=>'ALL','SALE' => lang('SALES'), 'PURCHASE' => lang('PURCHASES'),'TRANSFER' => lang('TRANSFER'),'SALES RETURN' => lang('SALES RETURN'),'USING STOCK' => lang('USING STOCK'),'RETURN USING STOCK' => lang('RETURN USING STOCK'),'EXPENSE' => lang('expanse'),'DELIVERY' => lang('delivery'),'ADJUSTMENT' => lang('ADJUSTMENTS'),'STOCK COUNT' => lang('stock_count'));
+                                  <?php $types = array(''=>'ALL','SALE' => lang('SALES'), 'PURCHASE' => lang('PURCHASES'),'TRANSFER' => lang('TRANSFER'),'SALE RETURN' => lang('SALE RETURN'),'USING STOCK' => lang('USING STOCK'),'RETURN USING STOCK' => lang('RETURN USING STOCK'),'EXPENSE' => lang('expanse'),'DELIVERY' => lang('delivery'),'ADJUSTMENT' => lang('ADJUSTMENTS'),'STOCK COUNT' => lang('stock_count'));
                                 echo form_dropdown('type', $types, (isset($_POST['type']) ? $_POST['type'] : "") , 'class="form-control input-tip" id="type" data-placeholder="'. $this->lang->line("select type") .'"'); ?>
 							</div>
                         </div>

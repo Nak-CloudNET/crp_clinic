@@ -110,8 +110,6 @@ class Pos extends MY_Controller
         }
 		if ($this->input->get('product_id')) {
             $product_id = $this->input->get('product_id');
-			
-			//$this->erp->print_arrays($product_id);
         } else {
             $product_id = NULL;
         }
@@ -163,11 +161,8 @@ class Pos extends MY_Controller
             
             .(($this->Owner || $this->Admin) ? '<li>'.$payments_link.'</li>' : ($this->GP['sales-payments'] ? '<li>'.$payments_link.'</li>' : '')).
             (($this->Owner || $this->Admin) ? '<li>'.$add_payment_link.'</li>' : ($this->GP['sales-payments'] ? '<li>'.$add_payment_link.'</li>' : '')).
-            (($this->Owner || $this->Admin) ? '<li>'.$add_delivery_link.'</li>' : ($this->GP['sales-add_delivery'] ? '<li>'.$add_delivery_link.'</li>' : '')).
             (($this->Owner || $this->Admin) ? '<li class="edit">'.$edit_link.'</li>' : ($this->GP['sales-edit'] ? '<li class="edit">'.$edit_link.'</li>' : '')).
-            (($this->Owner || $this->Admin) ? '<li>'.$email_link.'</li>' : ($this->GP['sales-email'] ? '<li>'.$email_link.'</li>' : '')).
-			(($this->Owner || $this->Admin) ? '<li>'.$return_link.'</li>' : ($this->GP['sales-return_sales'] ? '<li>'.$return_link.'</li>' : '')).
-			(($this->Owner || $this->Admin) ? '<li>'.$delete_link.'</li>' : ($this->GP['sales-delete'] ? '<li>'.$delete_link.'</li>' : '')).
+            (($this->Owner || $this->Admin) ? '<li>'.$return_link.'</li>' : ($this->GP['sales-return_sales'] ? '<li>'.$return_link.'</li>' : '')).
             
         '</ul>
 		</div></div>';

@@ -4042,8 +4042,7 @@ class Reports extends MY_Controller
 
         $this->load->library('calendar', $config);
         $sales = $user_id ? $sales = $this->reports_model->getStaffDailySales($user_id, $year, $month) : $this->reports_model->getDailySales($year, $month);
-		
-        if (!empty($sales)) {
+		if (!empty($sales)) {
             foreach ($sales as $sale) {
 				$d = date('Y-m-d', strtotime($year . '-' . $month . '-' . $sale->date));
 				$refund = $this->reports_model->getSalesReturnDate($d);
