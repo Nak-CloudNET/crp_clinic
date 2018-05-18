@@ -397,14 +397,7 @@
                     $(this).autocomplete('close');
                     $(this).removeClass('ui-autocomplete-loading');
                 }
-             /* else if (ui.content.length == 1 && ui.content[0].id == 0) {
-                    //audio_error.play();
-                    bootbox.alert('<?= lang('no_product_foundk') ?>', function () {
-                        $('#add_item').focus();
-                    });
-                    $(this).val('');
 
-                }*/
             },
             select: function (event, ui) {
                 event.preventDefault();
