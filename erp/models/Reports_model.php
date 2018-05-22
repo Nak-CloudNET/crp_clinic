@@ -907,7 +907,7 @@ ORDER BY
         $myQuery = "SELECT DATE_FORMAT( erp_sales.date,  '%e' ) AS date, 
 		SUM( COALESCE( erp_sales.product_tax, 0 ) ) AS tax1, 
 		SUM( COALESCE( erp_sales.order_tax, 0 ) ) AS tax2, 
-		SUM( COALESCE( erp_sales.total, 0 ) ) AS total, 
+		(SUM( COALESCE( erp_sales.total, 0 ) )-SUM(COALESCE(erp_return_sales.grand_total,0))) AS total, 
 		SUM( COALESCE( erp_sales.total_discount, 0 ) ) AS discount, 
 		SUM( COALESCE( erp_sales.order_discount, 0 ) ) AS order_discount, 
 		SUM( COALESCE( erp_sales.shipping, 0 ) ) AS shipping,SUM(COALESCE(erp_return_sales.grand_total,0)) as t_return
@@ -929,7 +929,7 @@ ORDER BY
         $myQuery = "SELECT DATE_FORMAT( erp_sales.date,  '%c' ) AS date,
 		SUM( COALESCE( erp_sales.product_tax, 0 ) ) AS tax1, 
 		SUM( COALESCE( erp_sales.order_tax, 0 ) ) AS tax2, 
-		SUM( COALESCE( erp_sales.total, 0 ) ) AS total,
+		(SUM( COALESCE( erp_sales.total, 0 ) )-SUM(COALESCE(erp_return_sales.grand_total,0))) AS total,
 		SUM( COALESCE( erp_sales.total_discount, 0 ) ) AS discount,
 		SUM( COALESCE( erp_sales.order_discount, 0 ) ) AS order_discount, 
 		SUM( COALESCE( erp_sales.shipping, 0 ) ) AS shipping,SUM(COALESCE(erp_return_sales.grand_total,0)) as t_return 
@@ -996,7 +996,7 @@ ORDER BY
     {
         $myQuery = "SELECT DATE_FORMAT( date,  '%e' ) AS date, SUM( COALESCE( product_tax, 0 ) ) AS tax1, 
 			SUM( COALESCE( order_tax, 0 ) ) AS tax2, 
-			SUM( COALESCE( total, 0 ) ) AS total,
+			(SUM( COALESCE( total, 0 ) )-SUM(COALESCE(erp_return_sales.grand_total,0))) AS total,
 			SUM( COALESCE( total_discount, 0 ) ) AS discount,
 			SUM( COALESCE( order_discount, 0 ) ) AS order_discount, 
 			SUM( COALESCE( shipping, 0 ) ) AS shipping
@@ -1052,7 +1052,7 @@ ORDER BY
         $myQuery = "SELECT DATE_FORMAT( erp_sales.date,  '%c' ) AS date, 
 		SUM( COALESCE( erp_sales.product_tax, 0 ) ) AS tax1, 
 		SUM( COALESCE( erp_sales.order_tax, 0 ) ) AS tax2, 
-		SUM( COALESCE( erp_sales.total, 0 ) ) AS total,
+		(SUM( COALESCE( erp_sales.total, 0 ) )-SUM(COALESCE(erp_return_sales.grand_total,0))) AS total,
 		SUM( COALESCE( erp_sales.total_discount, 0 ) ) AS discount, 
 		SUM( COALESCE( erp_sales.order_discount, 0 ) ) AS order_discount, 
 		SUM( COALESCE( erp_sales.shipping, 0 ) ) AS shipping,SUM(COALESCE(erp_return_sales.grand_total,0))as t_return
