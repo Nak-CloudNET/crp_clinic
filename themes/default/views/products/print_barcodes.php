@@ -11,7 +11,7 @@
             </ul>
         </div>
     </div>
-    <div>
+    <div class="box-content">
         <div class="row">
             <div class="col-lg-12">
                 <p class="introtext"><?php echo sprintf(lang('print_barcode_heading'), 
@@ -44,11 +44,13 @@
                         </table>
                     </div>
 
-                        <div class="form-group">
-                            <?= lang('style', 'style'); ?>
-                            <?php $opts = array(
+					<div class="form-group">
+						<?= lang('style', 'style'); ?>
+						<?php
+                            $opts = array(
                                             '' => lang('select').' '.lang('style'),
-                                            65 => lang('chea_kheang_barcode'), // Chea Kheng Barcode
+                                111 => lang('maman_barcode'), // MAMAN Barcode
+                                65 => lang('65_labels_a4'),
                                             11 => lang('SWAP'),
                                             6 => lang('SBPS'),
                                             10 => lang('AYCollection'),
@@ -62,63 +64,78 @@
                                             12 => lang('12_per_sheet'),
                                             50 => lang('continuous_feed'),
                                             16=>lang('new'),
-                                            90 => lang('a4-col-5')); ?>
-                            <?= form_dropdown('style', $opts, set_value('style', 24), 'class="form-control tip" id="style" required="required"'); ?>
-                            <div class="row cf-con" style="margin-top: 10px; display: none;">
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <?= form_input('cf_width', '', 'class="form-control" id="cf_width" placeholder="' . lang("width") . '"'); ?>
-                                            <span class="input-group-addon" style="padding-left:10px;padding-right:10px;"><?= lang('inches'); ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <?= form_input('cf_height', '', 'class="form-control" id="cf_height" placeholder="' . lang("height") . '"'); ?>
-                                            <span class="input-group-addon" style="padding-left:10px;padding-right:10px;"><?= lang('inches'); ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                    <?php $oopts = array(0 => lang('portrait'), 1 => lang('landscape')); ?>
-                                        <?= form_dropdown('cf_orientation', $oopts , '', 'class="form-control" id="cf_orientation" placeholder="' . lang("orientation") . '"'); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="help-block"><?= lang('barcode_tip'); ?></span>
-                            <span class="aflinks pull-right">
-                                <a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=-1&tracking=A4Lables&url=https://www.a4labels.com" target="_blank">A4Lables.com</a> |
-                                <a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-5-x-72mm/23585" target="_blank">12 per sheet</a> |
-                                <a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-x-47mm/23586" target="_blank">18 per sheet</a> |
-                                <a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-x-34mm/23588" target="_blank">24 per sheet</a> |
-                                <a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-46-x-25mm/23587" target="_blank">40 per sheet</a>
-                            </span>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="form-group">
-                            <span style="font-weight: bold; margin-right: 15px;"><?= lang('print'); ?>:</span>
-                            <input name="site_name" type="checkbox" id="site_name" value="1" checked="checked" style="display:inline-block;" />
-                            <label for="site_name" class="padding05"><?= lang('site_name'); ?></label>
-                            <input name="product_name" type="checkbox" id="product_name" value="1" checked="checked" style="display:inline-block;" />
-                            <label for="product_name" class="padding05"><?= lang('product_name'); ?></label>
-                            <input name="price" type="checkbox" id="price" value="1" checked="checked" style="display:inline-block;" />
-                            <label for="price" class="padding05"><?= lang('price'); ?></label>
-                            <input name="currencies" type="checkbox" id="currencies" value="1" style="display:inline-block;" />
-                            <label for="currencies" class="padding05"><?= lang('currencies'); ?></label>
-                            <input name="unit" type="checkbox" id="unit" value="1" style="display:inline-block;" />
-                            <label for="unit" class="padding05"><?= lang('unit'); ?></label>
-                            <input name="category" type="checkbox" id="category" value="1" style="display:inline-block;" />
-                            <label for="category" class="padding05"><?= lang('category'); ?></label>
-                            <input name="variants" type="checkbox" id="variants" value="1" style="display:inline-block;" />
-                            <label for="variants" class="padding05"><?= lang('variants'); ?></label>
-                            <input name="product_image" type="checkbox" id="product_image" value="1" style="display:inline-block;" />
-                            <label for="product_image" class="padding05"><?= lang('product_image'); ?></label>
+                                            90 => lang('a4-col-5'));
+                        ?>
+                        <?= form_dropdown('style', $opts, set_value('style', 111), 'class="form-control tip" id="style" required="required"'); ?>
+						<div class="row cf-con" style="margin-top: 10px; display: none;">
+							<div class="col-xs-4">
+								<div class="form-group">
+									<div class="input-group">
+										<?= form_input('cf_width', '', 'class="form-control" id="cf_width" placeholder="' . lang("width") . '"'); ?>
+										<span class="input-group-addon" style="padding-left:10px;padding-right:10px;"><?= lang('inches'); ?></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="form-group">
+									<div class="input-group">
+										<?= form_input('cf_height', '', 'class="form-control" id="cf_height" placeholder="' . lang("height") . '"'); ?>
+										<span class="input-group-addon" style="padding-left:10px;padding-right:10px;"><?= lang('inches'); ?></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="form-group">
+								<?php $oopts = array(0 => lang('portrait'), 1 => lang('landscape')); ?>
+									<?= form_dropdown('cf_orientation', $oopts , '', 'class="form-control" id="cf_orientation" placeholder="' . lang("orientation") . '"'); ?>
+								</div>
+							</div>
+						</div>
+						<span class="help-block"><?= lang('barcode_tip'); ?></span>
+						<span class="aflinks pull-right">
+							<a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=-1&tracking=A4Lables&url=https://www.a4labels.com" target="_blank">A4Lables.com</a> |
+							<a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-5-x-72mm/23585" target="_blank">12 per sheet</a> |
+							<a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-x-47mm/23586" target="_blank">18 per sheet</a> |
+							<a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-63-x-34mm/23588" target="_blank">24 per sheet</a> |
+							<a href="http://scripts.affiliatefuture.com/AFClick.asp?affiliateID=158618&merchantID=6360&programmeID=17564&mediaID=0&tracking=&url=https://www.a4labels.com/products/white-self-adhesive-printer-labels-46-x-25mm/23587" target="_blank">40 per sheet</a>
+						</span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-group">
+                        <span style="font-weight: bold; margin-right: 15px;"><?= lang('print'); ?>:</span>
+                        <input name="site_name" type="checkbox" id="site_name" value="1" style="display:inline-block;"/>
+                        <label for="site_name" class="padding05"><?= lang('site_name'); ?></label>
+                        <input name="product_name" type="checkbox" id="product_name" value="1" checked="checked"
+                               style="display:inline-block;"/>
+                        <label for="product_name" class="padding05"><?= lang('product_name'); ?></label>
+                        <input name="price" type="checkbox" id="price" value="1" checked="checked"
+                               style="display:inline-block;"/>
+                        <label for="price" class="padding05"><?= lang('price'); ?></label>
+                        <input name="currencies" type="checkbox" id="currencies" value="1"
+                               style="display:inline-block;"/>
+                        <label for="currencies" class="padding05"><?= lang('currencies'); ?></label>
+                        <input name="unit" type="checkbox" id="unit" value="1" style="display:inline-block;"/>
+                        <label for="unit" class="padding05"><?= lang('unit'); ?></label>
+                        <input name="category" type="checkbox" id="category" value="1" style="display:inline-block;"/>
+                        <label for="category" class="padding05"><?= lang('category'); ?></label>
+                        <input name="variants" type="checkbox" id="variants" value="1" style="display:inline-block;"/>
+                        <label for="variants" class="padding05"><?= lang('variants'); ?></label>
+                        <input name="product_image" type="checkbox" id="product_image" value="1"
+                               style="display:inline-block;"/>
+                        <label for="product_image" class="padding05"><?= lang('product_image'); ?></label>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="control-label" for="project"><?= lang("project"); ?></label>
+                        <?php
+
+                        foreach ($billers as $biller) {
+                            $bill[$biller->company] = $biller->company;
+                        }
+                        echo form_dropdown('biller', $bill, (isset($_POST['biller']) ? $_POST['biller'] : ""), 'class="form-control" id="biller" data-placeholder="' . $this->lang->line("select") . " " . $this->lang->line("biller") . '"');
+                        ?>
                         </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         <?php echo form_submit('print', lang("update"), 'class="btn btn-primary"'); ?>
                         <button type="button" id="reset" class="btn btn-danger"><?= lang('reset'); ?></button>
                     </div>
@@ -134,6 +151,10 @@
                                 if ($style == 12 || $style == 18 || $style == 24 || $style == 40 || $style == 8){
                                     echo '<div class="barcodea4">';
 									echo '<div id="contain" style="width:73%">';
+                                } elseif ($style == 111) { // MAMAN Barcode
+                                    echo '<div class="barcode111">';
+                                } elseif ($style == 65) {
+                                    echo '<div class="barcode65">';
                                 }elseif($style == 16){
 									echo '<div class="barcode">';
 								}elseif ($style == 6) {
@@ -149,7 +170,7 @@
 									}
 									
                                     for ($r = 1; $r <= $item['quantity']; $r++) {
-                                        echo '<div class="item style'.$style.'"  style="margin-left: 10px;height: 218px;border:none!important"'.
+                                        echo '<div class="item style'.$style.'" '.
                                         ($style == 50 && $this->input->post('cf_width') && $this->input->post('cf_height') ?
                                             'style="width:'.$this->input->post('cf_width').'in;height:'.$this->input->post('cf_height').'in;border:0;"' : '')
                                         .'>';
@@ -181,7 +202,7 @@
                                                 echo '<span class="barcode_site" style="font-size:12px">'.$item['site'].'</span>';
                                             }
                                             if($item['name']) {
-                                                echo '<span class="barcode_name" style="font-size:8px">'.$item['name'].'</span>';
+                                                echo '<span class="barcode_name" style="font-size:12px">'.$item['name'].'</span>';
                                             }
                                             if($item['unit']) {
                                                 echo '<span class="barcode_unit">'.lang('unit').': '.$item['unit'].'</span>, ';
@@ -196,19 +217,10 @@
                                                 }
                                                 echo '</span> ';
                                             }
-                                            echo '<span class="barcode_image sokhan" style="margin-top: -3px;">';
+                                            echo '<span class="barcode_image sokhan" style="margin-top: -7px;">';
                                             echo $item['barcode'];
                                             
                                             if($item['price']) {
-                                                // echo '<span class="barcode_price" style="margin-top:5px;font-weight:bold; font-size:10px; display:block; padding-top:2 !important;margin-bottom:9px;">'.lang('$').' ';
-                                                // if($item['currencies']) {
-                                                //     foreach ($currencies as $currency) {
-                                                //         echo $currency->code . ': ' . $this->erp->formatMoney($item['price'] * $currency->rate).', ';
-                                                //     }
-                                                // } else {
-                                                //     echo $item['price'];
-                                                // }
-                                                // echo '</span> ';
                                                 echo '<br>';
                                                 echo '<div class="col-sm-8 col-sm-offset-2">';
                                                 echo '<table>';
@@ -237,44 +249,142 @@
                                             echo '<br>';
                                             echo '<br>';
                                             echo '<br>';
-                                        }else{
-                                        if($item['site']) {
-                                            echo '<span class="barcode_site" style="font-size:12px">'.$item['site'].'</span>';
-                                        }
-                                        if($item['name']) {
-                                            echo '<span class="barcode_name" style="font-size:12px">'.$item['name'].'</span>';
-                                        }
-										if($item['image']) {
-                                            echo '<span class="product_image" style="height:100%"><img  style="width: 135px;height:126px" src="'.base_url('assets/uploads/thumbs/'.$item['image']).'" alt="" /></span>';
-                                        }
-                                        if($item['unit']) {
-                                            echo '<span class="barcode_unit">'.lang('unit').': '.$item['unit'].'</span>, ';
-                                        }
-                                        if($item['category']) {
-                                            echo '<span class="barcode_category">'.lang('category').': '.$item['category'].'</span> ';
-                                        }
-                                        if($item['variants']) {
-                                            echo '<span class="variants">'.lang('variants').': ';
-                                            foreach ($item['variants'] as $variant) {
-                                                echo $variant->name.', ';
+                                        } elseif ($style == 111) { // MAMAN Barcode
+                                            if ($item['site']) {
+                                                echo '<p class="barcode_site">' . $item['site'] . '</p>';
                                             }
-                                            echo '</span> ';
-                                        }
-                                        echo '<span class="barcode_image sokhan" style="margin-top: 5px;">';
-										echo $item['barcode'];
-										
-                                        if($item['price']) {
-                                            echo '<span class="barcode_price" style="font-weight:bold; font-size:7px; display:block; margin-top: -4px !important;">'.lang('$').' ';
-                                            if($item['currencies']) {
-                                                foreach ($currencies as $currency) {
-                                                    echo $currency->code . ': ' . $this->erp->formatMoney($item['price'] * $currency->rate).', ';
+
+                                            if ($item['biller']) {
+                                                if (strstr($item['biller'], '(', false)) {
+                                                    echo '<p class="barcode_biller">' . strstr($item['biller'], '(', true) . '</p>';
+                                                } else {
+                                                    echo '<p class="barcode_biller">' . $item['biller'] . '</p>';
                                                 }
-                                            } else {
-                                                echo $item['price'];
                                             }
-                                            echo '</span> ';
-                                        }
+
+                                            echo '<div class="row">';
+                                            echo '<div class="col-sm-3 col-xs-3"><div class="product_code rotate">';
+                                            echo $item['code'];
+                                            echo '</div></div>';
+                                            echo '<div class="col-sm-6 col-xs-6" style="height: 280px"><div class="barcode_img rotate">';
+                                            echo $item['barcode'];
+                                            echo '</div></div>';
+                                            if ($item['image']) {
+                                                echo '<span class="product_image" style="height:100%"><img src="' . base_url('assets/uploads/thumbs/' . $item['image']) . '" alt="" /></span>';
+                                            }
+                                            if ($item['unit']) {
+                                                echo '<span class="barcode_unit">' . lang('unit') . ': ' . $item['unit'] . '</span>, ';
+                                            }
+                                            if ($item['category']) {
+                                                echo '<span class="barcode_category">' . lang('category') . ': ' . $item['category'] . '</span> ';
+                                            }
+                                            if ($item['variants']) {
+                                                echo '<span class="variants">' . lang('variants') . ': ';
+                                                foreach ($item['variants'] as $variant) {
+                                                    echo $variant->name . ', ';
+                                                }
+                                                echo '</span> ';
+                                            }
+                                            echo '<div class="col-sm-3 col-xs-3">';
+
+                                            if ($item['name']) {
+                                                echo '<div><p class="barcode_name rotate" style="margin-left: -25px !important">' . $item['name'] . '</p></div>';
+                                            }
+                                            echo '</div>';
+                                            echo '</div>';
+
+                                            if ($item['price']) {
+                                                echo '<p class="barcode_price" style="border-top: 3px solid #000">';
+                                                if ($item['currencies']) {
+                                                    foreach ($currencies as $currency) {
+                                                        echo $currency->code . ': ' . $this->erp->formatMoney($item['price'] * $currency->rate) . ', ';
+                                                    }
+                                                } else {
+                                                    echo '<div style="float:left; font-size: 22px; font-weight:bold; font-family:Times New Roman; padding-left: 0.5cm"><span style="text-transform: none !important">Price:</span></div>';
+
+                                                    echo '<div style="float:right; font-size: 28px; font-weight:bold; font-family:Times New Roman; padding-right: 0.80cm">';
+                                                    echo $item['price'];
+                                                    echo '</div>';
+                                                }
+                                                echo '</p> ';
+                                            }
+
+                                        } elseif ($style == 65) {
+                                            if($item['site']) {
+                                                echo '<p class="barcode_site" style="font-size:12px; font-weight: bold; margin-bottom: 0 !important">'.$item['site'].'</p>';
+                                            }
+                                            if($item['name']) {
+                                                echo '<span class="barcode_name" style="font-size:10px">'.$item['name'].'</span>';
+                                            }
+                                            if($item['image']) {
+                                                echo '<span class="product_image" style="height:100%"><img  style="width:120px;height:126px" src="'.base_url('assets/uploads/thumbs/'.$item['image']).'" alt="" /></span>';
+                                            }
+                                            if($item['unit']) {
+                                                echo '<span class="barcode_unit">'.lang('unit').': '.$item['unit'].'</span>, ';
+                                            }
+                                            if($item['category']) {
+                                                echo '<span class="barcode_category">'.lang('category').': '.$item['category'].'</span> ';
+                                            }
+                                            if($item['variants']) {
+                                                echo '<span class="variants">'.lang('variants').': ';
+                                                foreach ($item['variants'] as $variant) {
+                                                    echo $variant->name.', ';
+                                                }
+                                                echo '</span> ';
+                                            }
+                                            echo '<span class="barcode_image sokhan" style="margin-top: -7px;">';
+                                            echo $item['barcode'];
+                                            
+                                            if($item['price']) {
+                                                echo '<span class="barcode_price" style="font-weight:bold; font-size:14px; display:block; padding-top:2px !important;margin-bottom:9px;">';
+                                                if($item['currencies']) {
+                                                    foreach ($currencies as $currency) {
+                                                        echo $currency->code . ': ' . $this->erp->formatMoney($item['price'] * $currency->rate).', ';
+                                                    }
+                                                } else {
+                                                    echo $item['price'];
+                                                }
+                                                echo '</span> ';
+                                            }
+                                        }else{
+                                            if($item['site']) {
+                                                echo '<span class="barcode_site" style="font-size:12px">'.$item['site'].'</span>';
+                                            }
+                                            if($item['name']) {
+                                                echo '<span class="barcode_name" style="font-size:12px">'.$item['name'].'</span>';
+                                            }
+    										if($item['image']) {
+                                                echo '<span class="product_image" style="height:100%"><img  style="width:120px;height:126px" src="'.base_url('assets/uploads/thumbs/'.$item['image']).'" alt="" /></span>';
+                                            }
+                                            if($item['unit']) {
+                                                echo '<span class="barcode_unit">'.lang('unit').': '.$item['unit'].'</span>, ';
+                                            }
+                                            if($item['category']) {
+                                                echo '<span class="barcode_category">'.lang('category').': '.$item['category'].'</span> ';
+                                            }
+                                            if($item['variants']) {
+                                                echo '<span class="variants">'.lang('variants').': ';
+                                                foreach ($item['variants'] as $variant) {
+                                                    echo $variant->name.', ';
+                                                }
+                                                echo '</span> ';
+                                            }
+                                            echo '<span class="barcode_image sokhan" style="margin-top: -7px;">';
+    										echo $item['barcode'];
+    										
+                                            if($item['price']) {
+                                                echo '<span class="barcode_price" style="margin-top:5px;font-weight:bold; font-size:10px; display:block; padding-top:2px !important;margin-bottom:9px;">' . lang('$') . ' ';
+                                                if($item['currencies']) {
+                                                    foreach ($currencies as $currency) {
+                                                        echo $currency->code . ': ' . $this->erp->formatMoney($item['price'] * $currency->rate).', ';
+                                                    }
+                                                } else {
+                                                    echo $item['price'];
+                                                }
+                                                echo '</span> ';
+                                            }
 										}
+
 										echo '</span>';
                                         if ($style == 50) {
                                             echo '</div>';
@@ -283,6 +393,12 @@
                                         if ($style == 40) {
                                             if ($c % 40 == 0) {
                                                 echo '</div><div class="clearfix"></div><div class="barcodea4">';
+                                            }
+                                        } elseif ($style == 111) { // MAMAN Barcode
+                                            echo '</div><div class="clearfix"></div><div class="barcode111">';
+                                        } elseif ($style == 65) {
+                                            if ($c % 65 == 0) {
+                                                echo '</div><div class="clearfix"></div><div class="barcode65">';
                                             }
                                         } elseif ($style == 30) {
                                             if ($c % 30 == 0) {
@@ -334,8 +450,6 @@
                                         $c++;
                                     }
                                 }
-								
-								
 								
                                 if ($style != 50) {
 									echo '</div>';
@@ -397,18 +511,11 @@
                     $(this).autocomplete('close');
                     $(this).removeClass('ui-autocomplete-loading');
                 }
-             /* else if (ui.content.length == 1 && ui.content[0].id == 0) {
-                    //audio_error.play();
-                    bootbox.alert('<?= lang('no_product_foundk') ?>', function () {
-                        $('#add_item').focus();
-                    });
-                    $(this).val('');
-
-                }*/
             },
             select: function (event, ui) {
                 event.preventDefault();
                 if (ui.item.id !== 0) {
+					//console.log(ui.item.id);return;
                     var row = add_product_item(ui.item);
                     if (row) {
                         $(this).val('');
@@ -595,37 +702,37 @@
             bootbox.confirm(lang.r_u_sure, function (result) {
                 if (result) {
                     if (localStorage.getItem('bcitems')) {
-                        localStorage.removeItem('bcitems');
+                        __removeItem('bcitems');
                     }
                     if (localStorage.getItem('bcstyle')) {
-                        localStorage.removeItem('bcstyle');
+                        __removeItem('bcstyle');
                     }
                     if (localStorage.getItem('bcsite_name')) {
-                        localStorage.removeItem('bcsite_name');
+                        __removeItem('bcsite_name');
                     }
                     if (localStorage.getItem('bcproduct_name')) {
-                        localStorage.removeItem('bcproduct_name');
+                        __removeItem('bcproduct_name');
                     }
                     if (localStorage.getItem('bcprice')) {
-                        localStorage.removeItem('bcprice');
+                        __removeItem('bcprice');
                     }
                     if (localStorage.getItem('bccurrencies')) {
-                        localStorage.removeItem('bccurrencies');
+                        __removeItem('bccurrencies');
                     }
                     if (localStorage.getItem('bcunit')) {
-                        localStorage.removeItem('bcunit');
+                        __removeItem('bcunit');
                     }
                     if (localStorage.getItem('bccategory')) {
-                        localStorage.removeItem('bccategory');
+                        __removeItem('bccategory');
                     }
                     // if (localStorage.getItem('cf_width')) {
-                    //     localStorage.removeItem('cf_width');
+                    //     __removeItem('cf_width');
                     // }
                     // if (localStorage.getItem('cf_height')) {
-                    //     localStorage.removeItem('cf_height');
+                    //     __removeItem('cf_height');
                     // }
                     // if (localStorage.getItem('cf_orientation')) {
-                    //     localStorage.removeItem('cf_orientation');
+                    //     __removeItem('cf_orientation');
                     // }
 
                     $('#modal-loading').show();
@@ -654,11 +761,25 @@
     });
 
     function add_product_item(item) {
+		
         ac = true;
         if (item == null) {
             return false;
         }
-        item_id = item.id;
+        // console.log(item.variants);
+        var rounded = item.id;
+
+        $(".rid").each(function () {
+            var rid = $(this).val();
+            row = $(this).closest('tr');
+            var opt = row.find('.roption').val();
+            if ((parseFloat(rid) === parseFloat(item.item_id) && parseFloat(opt) === parseFloat(item.variants)) || (parseFloat(rid) === parseFloat(item.item_id) && item.variants === false)) {
+                rounded = row.find('.count').val();
+            }
+        });
+
+        var item_id = site.settings.item_addition == 1 ? rounded : item.id;
+
         if (bcitems[item_id]) {
             bcitems[item_id].qty = parseFloat(bcitems[item_id].qty) + 1;
         } else {
@@ -682,22 +803,24 @@
             bcitems = JSON.parse(localStorage.getItem('bcitems'));
 
             $.each(bcitems, function () {
-
                 var item = this;
+
                 var row_no = item.id;
                 var vd = '';
-                var newTr = $('<tr id="row_' + row_no + '" class="row_' + item.id + '" data-item-id="' + item.id + '"></tr>');
-                tr_html = '<td><input name="product[]" type="hidden" value="' + item.id + '"><span id="name_' + row_no + '">' + item.name + ' (' + item.code + ')</span></td>';
-                tr_html += '<td><input class="form-control quantity text-center" name="quantity[]" type="text" value="' + formatDecimal(item.qty) + '" data-id="' + row_no + '" data-item="' + item.id + '" id="quantity_' + row_no + '" onClick="this.select();"></td>';
+                var item_id = site.settings.item_addition == 1 ? item.id : item.id;
+
+                var newTr = $('<tr id="row_' + row_no + '" class="row_' + item_id + '" data-item-id="' + item_id + '"></tr>');
+                tr_html = '<td><input name="product[]" type="hidden" value="' + item_id + '"><input name="product_id[]" type="hidden" value="' + item.pro_id + '"><span id="name_' + row_no + '">' + item.name + ' (' + item.code + ')</span><input type="hidden" class="count" value="' + item_id + '"><input type="hidden" class="rid" value="' + item.pro_id + '"></td>';
+                tr_html += '<td><input class="form-control quantity text-center" name="quantity[]" type="text" value="' + formatDecimal(item.qty) + '" data-id="' + row_no + '" data-item="' + item_id + '" id="quantity_' + row_no + '" onClick="this.select();"></td>';
                 if(item.variants) {
                     $.each(item.variants, function () {
-                        vd += '<input name="vt_'+ item.id +'_'+ this.id +'" type="checkbox" class="checkbox" id="'+this.id+'" data-item-id="'+item.id+'" value="'+this.id+'" '+( item.selected_variants[this.id] == 1 ? 'checked="checked"' : '')+' style="display:inline-block;" /><label for="'+this.id+'" class="padding05">'+this.name+'</label>';
+                        vd += '<input name="vt_' + item_id + '_' + this.id + '" type="checkbox" class="checkbox" id="' + this.id + '" data-item-id="' + item_id + '" value="' + this.id + '" ' + (item.selected_variants[this.id] == 1 ? 'checked="checked"' : '') + ' style="display:inline-block;" /><input type="hidden" class="roption" value="' + this.id + '"><label for="' + this.id + '" class="padding05">' + this.name + '</label>';
                     });
                 }
                 tr_html += '<td>'+vd+'</td>';
                 tr_html += '<td class="text-center"><i class="fa fa-times tip del" id="' + row_no + '" title="Remove" style="cursor:pointer;"></i></td>';
                 newTr.html(tr_html);
-                newTr.appendTo("#bcTable");
+                newTr.prependTo("#bcTable");
             });
             $('input[type="checkbox"],[type="radio"]').not('.skip').iCheck({
                 checkboxClass: 'icheckbox_square-blue',

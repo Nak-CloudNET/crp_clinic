@@ -751,46 +751,75 @@ class Products extends MY_Controller
         $this->data['page_title'] = lang("barcode_label");
         $this->load->view($this->theme . 'products/single_label2', $this->data);
     }
-
-    function print_barcodes($product_id = NULL)
+	
+	function print_barcodes($product_id = NULL)
     {
         $this->erp->checkPermissions('print_barcodes', NULL, 'products');
         $this->form_validation->set_rules('style', lang("style"), 'required');
         if ($this->form_validation->run() == true) {
 
             $style = $this->input->post('style');
-            $bci_size = ($style == 10 || $style == 12 || $style == 90 || $style == 6 ? 50 : ($style == 14 || $style == 16 || $style == 18 ? 30 : 20));
+            $bci_size = ($style == 111 || $style == 10 || $style == 12 || $style == 90 || $style == 6 ? 50 : ($style == 14 || $style == 16 || $style == 18 ? 30 : 20));
+            
             $currencies = $this->site->getAllCurrencies();
-            $s = isset($_POST['product']) ? sizeof($_POST['product']) : 0;
+            $s = isset($_POST['product_id']) ? sizeof($_POST['product_id']) : 0;
+
             if ($s < 1) {
                 $this->session->set_flashdata('error', lang('no_product_selected'));
                 redirect("products/print_barcodes");
             }
 			
-            for ($m = 0; $m < $s; $m++) {
-                $pid = $_POST['product'][$m];
+			for ($m = 0; $m < $s; $m++) {
+                $pid = $_POST['product_id'][$m];
                 $quantity = $_POST['quantity'][$m];
                 $product = $this->products_model->getProductWithCategory($pid);
-                $barcodes[] = array(
-                        'site' => $this->input->post('site_name') ? $this->Settings->site_name : FALSE,
-                        'name' => $this->input->post('product_name') ? $product->name : FALSE,
-                        'image' => $this->input->post('product_image') ? $product->image : FALSE,
-                        'barcode' => $this->product_barcode($product->code, $product->barcode_symbology, $bci_size),
-                        'price' => $this->input->post('price') ?  $this->erp->formatMoney($product->price) : FALSE,
-                        'unit' => $this->input->post('unit') ? $product->unit : FALSE,
-                        'category' => $this->input->post('category') ? $product->category : FALSE,
-                        'currencies' => $this->input->post('currencies'),
-                        'variants' => FALSE,
-                        'quantity' => $quantity
-                    );
 
-			}
-			
+                if ($variants = $this->products_model->getProductOptionsByProId($pid)) {
+                    foreach ($variants as $option) {
+                        //if ($this->input->post('vt_'.$product->id.'_'.$option->id)) {
+                            $barcodes[] = array(
+                                'biller' => $this->input->post('biller'),
+                                'site' => $this->input->post('site_name') ? $this->Settings->site_name : FALSE,
+                                'code' => $product->code,
+                                'name' => $this->input->post('product_name') ? $product->name . ' - ' . $option->name : FALSE,
+                                'image' => $this->input->post('product_image') ? $product->image : FALSE,
+                                'barcode' => $this->product_barcode($product->code . $this->Settings->barcode_separator . $option->id, 'code128', $bci_size),
+                                'price' => $this->input->post('price') ? $this->erp->formatMoney($option->price != 0 ? $option->price : $product->price) : FALSE,
+                                'unit' => $this->input->post('unit') ? $product->unit : FALSE,
+                                'category' => $this->input->post('category') ? $product->category : FALSE,
+                                'currencies' => $this->input->post('currencies'),
+                                'variants' => $this->input->post('variants') ? $variants : FALSE,
+                                'quantity' => $quantity
+                                );
+
+
+                        // }
+                    }
+                } else {
+                    $barcodes[] = array(
+                        'biller' => $this->input->post('biller'),
+                        'site' 			=> $this->input->post('site_name') ? $this->Settings->site_name : FALSE,
+                        'code' => $product->code,
+                        'name' 			=> $this->input->post('product_name') ? $product->name : FALSE,
+                        'image' 		=> $this->input->post('product_image') ? $product->image : FALSE,
+                        'barcode' 		=> $this->product_barcode($product->code, $product->barcode_symbology, $bci_size),
+                        'price' 		=> $this->input->post('price') ?  $this->erp->formatMoney($product->price) : FALSE,
+                        'unit' 			=> $this->input->post('unit') ? $product->unit : FALSE,
+                        'category' 		=> $this->input->post('category') ? $product->category : FALSE,
+                        'currencies' 	=> $this->input->post('currencies'),
+                        'variants' 		=> FALSE,
+                        'quantity' 		=> $quantity
+                    );
+                }
+            }
+
             $this->data['barcodes'] = $barcodes;
             $this->data['currencies'] = $currencies;
             $this->data['style'] = $style;
             $this->data['items'] = false;
             $this->data['cur'] = $this->products_model->getRate();
+            $this->data['billers'] = $this->site->getAllCompanies('biller');
+		
             $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('products'), 'page' => lang('products')), array('link' => '#', 'page' => lang('print_barcodes')));
             $meta = array('page_title' => lang('print_barcodes'), 'bc' => $bc);
             $this->page_construct('products/print_barcodes', $meta, $this->data);
@@ -814,7 +843,7 @@ class Products extends MY_Controller
                                     $selected_variants[$variant->id] = isset($pr[$row->id]['selected_variants'][$variant->id]) && !empty($pr[$row->id]['selected_variants'][$variant->id]) ? 1 : ($variant->id == $item->option_id ? 1 : 0);
                                 }
                             }
-                            $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $item->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
+                            $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $row->quantity == NULL ? $row->quantity = 1 : $row->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
                         }
                     }
                     $this->data['message'] = lang('products_added_to_list');
@@ -830,7 +859,7 @@ class Products extends MY_Controller
                                 $selected_variants[$variant->id] = $variant->quantity > 0 ? 1 : 0;
                             }
                         }
-                        $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $row->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
+                        $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $row->quantity == NULL ? $row->quantity = 1 : $row->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
                     }
                     $this->data['message'] = lang('products_added_to_list');
                 } else {
@@ -848,7 +877,7 @@ class Products extends MY_Controller
                                 $selected_variants[$variant->id] = $variant->quantity > 0 ? 1 : 0;
                             }
                         }
-                        $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $row->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
+                        $pr[$row->id] = array('id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => $row->quantity == NULL ? $row->quantity = 1 : $row->quantity, 'variants' => $variants, 'selected_variants' => $selected_variants);
                     }
                     $this->data['message'] = lang('products_added_to_list');
                 } else {
@@ -858,12 +887,14 @@ class Products extends MY_Controller
             }
 
             $this->data['items'] = isset($pr) ? json_encode($pr) : false;
+            $this->data['billers'] = $this->site->getAllCompanies('biller');
             $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
             $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('products'), 'page' => lang('products')), array('link' => '#', 'page' => lang('print_barcodes')));
             $meta = array('page_title' => lang('print_barcodes'), 'bc' => $bc);
             $this->page_construct('products/print_barcodes', $meta, $this->data);
         }
     }
+	
 
     function add($id = NULL,$param=null)
     {
@@ -1336,7 +1367,26 @@ class Products extends MY_Controller
         }
 	}
 
-    function get_suggestions()
+	function get_suggestions()
+    {
+        $term = $this->input->get('term', TRUE);
+        if (strlen($term) < 1 || !$term) {
+            die("<script type='text/javascript'>setTimeout(function(){ window.top.location.href = '" . site_url('welcome') . "'; }, 10);</script>");
+        }
+
+        $rows = $this->products_model->getProductsForPrinting($term);
+        if ($rows) {
+            foreach ($rows as $row) {
+                $variants = $this->products_model->getProductOptions($row->id);
+                $pr[] = array('id' => str_replace(".", "", microtime(true)), 'pro_id' => $row->id, 'label' => $row->name . " (" . $row->code . ")", 'code' => $row->code, 'name' => $row->name, 'price' => $row->price, 'qty' => 1, 'variants' => $variants);
+            }			
+            echo json_encode($pr);
+        } else {
+            echo json_encode(array(array('id' => 0, 'label' => lang('no_match_found'), 'value' => $term)));
+        }
+    }
+	
+    function get_suggestions_old()
     {
         $term = $this->input->get('term', TRUE);
         if (strlen($term) < 1 || !$term) {
