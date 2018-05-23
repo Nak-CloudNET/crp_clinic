@@ -901,7 +901,7 @@ ORDER BY
         }
         return FALSE;
     }
-    //Update by Ravy
+    //Update by Than Ravy
     public function getDailySales($year, $month)
     {
         $myQuery = "SELECT DATE_FORMAT( erp_sales.date,  '%e' ) AS date, 
