@@ -37,7 +37,9 @@ class Products extends MY_Controller
         }
 		$this->default_biller_id = $this->site->default_biller_id();
     }
-	
+
+
+    /**/
 	function index($warehouse_id = NULL)
     {
         $this->erp->checkPermissions('index',null,'products');
