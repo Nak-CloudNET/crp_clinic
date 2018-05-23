@@ -3515,6 +3515,7 @@ var lang = {unexpected_value: '<?=lang('unexpected_value');?>', select_above: '<
 						});
 						$(this).val('');
 					} else {
+						
 						var row = add_invoice_item(ui.item);
 						if (row)
 							$(this).val('');
@@ -3525,6 +3526,7 @@ var lang = {unexpected_value: '<?=lang('unexpected_value');?>', select_above: '<
 					$('#add_item').focus();
 					$(this).val('');
                 }
+				
             }
             
             
