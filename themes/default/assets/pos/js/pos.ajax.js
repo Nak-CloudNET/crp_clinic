@@ -1118,8 +1118,8 @@ function fsd(oObj) {
 function loadItems() {
 	$('#print_order_drink').css('pointer-events','auto');
 	$('#print_order_food').css('pointer-events','auto');
-	
-	if (localStorage.getItem('positems')) {
+	var b=JSON.parse(localStorage.getItem('positems'));
+	if (b!=null) {
 		total 				= 0;
 		count 				= 1;
 		an 					= 1;
@@ -1182,7 +1182,7 @@ function loadItems() {
 		$.each(positems, function (i, e) {
 			
 			var item 			= this;
-			var item_id 		= site.settings.item_addition == 1 ? item.item_id : item.id;
+			var item_id 		= site.settings.item_addition == 1 ? item.id : item.id;
 			positems[item_id] 	= item;
 			var item_note 		= '';
 			var product_id 		= item.row.id, 
@@ -1644,9 +1644,11 @@ function printLine(str) {
  * @returns {Boolean}
  ---------------------------- */
 
+
+ 
  function add_invoice_item(item) {
 
- 	if (count == 1) {
+	if (count == 1) {
  		positems = {};
  		if ($('#poswarehouse').val() && $('#poscustomer').val()) {
  			$('#poscustomer').select2("readonly", true);
@@ -1661,19 +1663,34 @@ function printLine(str) {
  		return;
  	}
 	
-	var ie = $("#posTable tbody tr").length+1;
+	var ie 		= $("#posTable tbody tr").length+1;
+	var rounded = item.id;
 	
- 	var item_id = site.settings.item_addition == 1 ? item.item_id : item.id;
+	$( ".rid" ).each(function() {
+		var rid = $(this).val();
+		row     = $(this).closest('tr');
+		var opt = row.find('.roption').val();
+
+        if ((parseFloat(rid) === parseFloat(item.pro_id) && parseFloat(opt) === parseFloat(item.row.option)) || (parseFloat(rid) === parseFloat(item.pro_id) && item.row.option === false)) {
+			rounded = row.find('.count').val();
+		}
+	});
 	
- 	if (positems[item_id]) {
+	var item_id = site.settings.item_addition == 1 ? rounded : item.id;
+ 	//var item_id = site.settings.item_addition == 1 ? item.item_id : item.id;
+	
+	if (positems[item_id]) {
  		positems[item_id].row.qty = parseFloat(positems[item_id].row.qty) + 1;
-		
+
  	} else {
  		positems[item_id] = item;
  	}
- 	localStorage.setItem('positems', JSON.stringify(positems));
+	
+	localStorage.setItem('positems', JSON.stringify(positems));
  	loadItems();
  	return true;
+	
+ 	
  }
 
  if (typeof (Storage) === "undefined") {

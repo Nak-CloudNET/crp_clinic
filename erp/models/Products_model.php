@@ -3038,4 +3038,18 @@ class Products_model extends CI_Model
         return FALSE;
 	}
 	
+	public function getProductOptionsByProId($pid)
+    {
+        $this->db->order_by('qty_unit', 'ASC');
+        $q = $this->db->get_where('product_variants', array('product_id' => $pid));
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return FALSE;
+    }
+	
+	
 }

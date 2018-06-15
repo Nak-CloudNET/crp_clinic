@@ -186,6 +186,7 @@ class Pos extends MY_Controller
 										(".$this->db->dbprefix('sales').".grand_total - COALESCE((SELECT SUM(erp_return_sales.grand_total) FROM erp_return_sales WHERE erp_return_sales.sale_id = erp_sales.id), 0) - COALESCE((SELECT SUM(IF((erp_payments.paid_by != 'deposit' AND ISNULL(erp_payments.return_id)), erp_payments.amount, IF(NOT ISNULL(erp_payments.return_id), ((-1)*erp_payments.amount), 0))) FROM erp_payments WHERE erp_payments.sale_id = erp_sales.id),0) - COALESCE((SELECT SUM(IF(erp_payments.paid_by = 'deposit', erp_payments.amount, 0)) FROM erp_payments WHERE erp_payments.sale_id = erp_sales.id), 0) - COALESCE((SELECT SUM(erp_payments.discount) FROM erp_payments WHERE erp_payments.sale_id = erp_sales.id), 0)) as balance, 
 										sales.payment_status")
                 ->from('sales')
+                ->join('payments', 'payments.sale_id=sales.id', 'left')
                 ->join('companies', 'companies.id = sales.customer_id', 'left')
 				->join('companies as erp_biller', 'biller.id = sales.biller_id', 'inner')
                 ->where_in('sales.warehouse_id', $warehouse_id)
@@ -218,7 +219,7 @@ class Pos extends MY_Controller
 		}
 		
         $this->datatables->where('pos', 1);
-		
+
         if (!$this->Customer && !$this->Supplier && !$this->Owner && !$this->Admin && !$this->session->userdata('view_right')) {
             $this->datatables->where('sales.created_by', $this->session->userdata('user_id'));
         } elseif ($this->Customer) {
