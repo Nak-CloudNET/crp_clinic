@@ -72,7 +72,7 @@
                     <td width="300px;" style="font-weight:bold;"><h4><strong><?= lang('total_cash'); ?></strong>:</h4>
                     </td>
                     <td style="text-align:right;"><h4>
-                            <span><strong><?= $cashsales->paid ? $this->erp->formatMoney(($cashsales->paid + ($this->session->userdata('cash_in_hand'))) - $expense - ($refunds->returned ? $refunds->returned : 0)) : $this->erp->formatMoney($this->session->userdata('cash_in_hand') - $expense); ?></strong></span>
+                            <span><strong><?= $cashsales->paid ? $this->erp->formatMoney(($cashsales->paid + $this->erp->formatDecimal($this->session->userdata('cash_in_hand'))) - $expense - ($refunds->returned ? $refunds->returned : 0)) : $this->erp->formatMoney($this->session->userdata('cash_in_hand') - $expense); ?></strong></span>
                         </h4></td>
                 </tr>
             </table>

@@ -1490,7 +1490,7 @@ class Pos extends MY_Controller
                 
                 $user_register          = $user_id ? $this->pos_model->registerData($user_id) : NULL;
                 $user_close_register    = $user_id ? $this->pos_model->closeRegisterData($id) : NULL;
-                $register_open_time     = $user_register ? $user_register->date : $this->session->userdata('register_open_time');
+                $register_open_time     = $user_register ? date('Y-m-d',strtotime($user_register->date)) : $this->session->userdata('register_open_time');
                 $register_close_time    = $user_close_register ? $user_close_register->closed_at : $this->session->userdata('register_close_time');
                 if($rdate){
                     $register_open_time = $rdate;

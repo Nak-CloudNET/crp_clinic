@@ -103,7 +103,7 @@
                     </tr>
                 <?php } ?>
                 <?php
-                    $totalsales = $cash_in_hand + $cashsales->paid + $chsales->paid + $ccsales->paid + $memsales->paid + $vouchersales->paid;
+                    $totalsales = $this->erp->formatDecimal($cash_in_hand) + $cashsales->paid + $chsales->paid + $ccsales->paid + $memsales->paid + $vouchersales->paid;
                     $total_sales = $cashsales->paid + $chsales->paid + $ccsales->paid + $memsales->paid + $vouchersales->paid;
 					
                     $total_sales2 = $cashsales->total + $chsales->total + $ccsales->total + $memsales->total + $vouchersales->total;
@@ -131,7 +131,7 @@
                 </tr>
                 <?php
 					
-                    $total_cash = ($totalsales - $refunds->returned)- $expenses->total;
+                    $total_cash = ($this->erp->formatDecimal($totalsales) - $refunds->returned)- $expenses->total;
                 ?>
                 <tr>
                     <td width="300px;" style="font-weight:bold;"><h4><strong><?= lang('total_cash'); ?></strong>:</h4>
