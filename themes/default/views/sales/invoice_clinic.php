@@ -203,3 +203,13 @@
 		</div>
 	</body>
 </html>
+
+<div id="buttons" style="position:absolute; bottom:0px; padding-left:220px; text-transform:uppercase;" class="no-print">
+	<span class="no-print col-xs-2" style="width:200px;">
+		<a href="<?=base_url()?>pos" class="btn btn-block btn-primary no-print" ><?= lang("back_to_pos"); ?></a>
+	</span>
+	<span class="no-print col-xs-2" style="width:200px;">
+		<a href="javascript:window.print()" id="web_print" class="btn btn-block btn-primary"
+           onClick="window.print();return false;"><?= lang("print"); ?></a>
+	</span>
+</div>
